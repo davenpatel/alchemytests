@@ -10,12 +10,12 @@ class TimestampMixin:
 
     created_at: Mapped[datetime] = mapped_column(
         DateTime,
-        server_default=func.now(),
-        nullable=False,  # pylint: disable=not-callable
+        server_default=func.now(), # pylint: disable=not-callable
+        nullable=False,
     )
     updated_at: Mapped[datetime] = mapped_column(
         DateTime,
-        server_default=func.now(),
-        onupdate=func.now(),
-        nullable=False,  # pylint: disable=not-callable
+        server_default=func.now(), # pylint: disable=not-callable
+        onupdate=func.now(), # pylint: disable=not-callable
+        nullable=False,
     )
