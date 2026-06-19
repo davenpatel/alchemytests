@@ -20,4 +20,4 @@ jobs:
         pip install pylint sqlalchemy
     - name: Analysing the code with pylint
       run: |
-        pylint --rcfile=.pyproject.toml $(git ls-files '*.py')
+        pylint --rcfile=pyproject.toml $(git ls-files '*.py')
