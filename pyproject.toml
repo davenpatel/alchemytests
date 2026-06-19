@@ -21,4 +21,4 @@ dev = [
 ]
 
 [tool.pylint.main]
-ignore-paths = ["^.*/alembic/.*$"]
+ignore-paths = ['.*[/\]alembic[/\](.*)?']
