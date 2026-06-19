@@ -1,4 +1,3 @@
-
 from logging.config import fileConfig
 
 from sqlalchemy import engine_from_config
@@ -38,24 +37,26 @@ target_metadata = [
 # my_important_option = config.get_main_option("my_important_option")
 # ... etc.
 
+
 def get_target_metadata():
     # print('X Arguments:', context.get_x_argument(as_dictionary=True))
-    valid_commands = { "revision" }
+    valid_commands = {"revision"}
     command_run = context.config.cmd_opts.cmd[0].__name__
     selected_metadata = target_metadata
-    
+
     if command_run in valid_commands:
         target_base_key = context.get_x_argument(as_dictionary=True).get("base")
         if target_base_key is None:
             raise ValueError("No base key provided. Use --x base=base_name")
-        
+
         base = target_bases.get(target_base_key)
         if base is None:
             raise ValueError(f"Invalid base key: {target_base_key}")
-        selected_metadata = base.metadata 
-        # print(f"Selected metadata for base '{target_base_key}': {selected_metadata}")                
-            
+        selected_metadata = base.metadata
+        # print(f"Selected metadata for base '{target_base_key}': {selected_metadata}")
+
     return selected_metadata
+
 
 def include_object(object, name, type_, reflected, compare_to):
     # If the object belongs to a schema you don't care about, ignore it
@@ -63,6 +64,7 @@ def include_object(object, name, type_, reflected, compare_to):
     if type_ == "table" and object.schema != target_schema:
         return False
     return True
+
 
 def run_migrations_offline() -> None:
     """Run migrations in 'offline' mode.
@@ -95,8 +97,10 @@ def run_migrations_online() -> None:
     and associate a connection with the context.
 
     """
-    selected_metadata = get_target_metadata()  # Default to all metadata if no specific base is provided
-    
+    selected_metadata = (
+        get_target_metadata()
+    )  # Default to all metadata if no specific base is provided
+
     connectable = engine_from_config(
         config.get_section(config.config_ini_section, {}),
         prefix="sqlalchemy.",
@@ -113,6 +117,7 @@ def run_migrations_online() -> None:
 
         with context.begin_transaction():
             context.run_migrations()
+
 
 if context.is_offline_mode():
     run_migrations_offline()

@@ -3,6 +3,7 @@ from sqlalchemy.orm import relationship
 from .personnel_base import PersonnelBase
 from ..mixins import TimestampMixin
 
+
 class LineItem(PersonnelBase, TimestampMixin):
     __tablename__ = "line_items"
     __table_args__ = {"schema": "personnel"}
@@ -12,5 +13,5 @@ class LineItem(PersonnelBase, TimestampMixin):
     product_name = Column(String(100), nullable=False)
     quantity = Column(Integer, nullable=False)
     price = Column(Float, nullable=False)
-    
+
     order = relationship("Order", back_populates="personnel.line_items")
