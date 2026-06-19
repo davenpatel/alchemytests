@@ -1,2 +1,2 @@
 [MASTER]
-ignore-paths = ^.*/alembic/.*$
+ignore-paths = ^alembic/.*
