@@ -6,6 +6,7 @@ from .networking_base import NetworkingBase
 from ..mixins import TimestampMixin
 
 
+# pylint: disable=too-few-public-methods
 class Network(NetworkingBase, TimestampMixin):
     """Represents a network."""
 

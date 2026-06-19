@@ -6,6 +6,7 @@ from .personnel_base import PersonnelBase
 from ..mixins import TimestampMixin
 
 
+# pylint: disable=too-few-public-methods
 class Order(PersonnelBase, TimestampMixin):
     """Order model representing a user's order."""
 

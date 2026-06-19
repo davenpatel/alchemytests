@@ -6,6 +6,7 @@ from .networking_base import NetworkingBase
 from ..mixins import TimestampMixin
 
 
+# pylint: disable=too-few-public-methods
 class Router(NetworkingBase, TimestampMixin):
     """Represents a router in the network."""
 

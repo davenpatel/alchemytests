@@ -6,6 +6,7 @@ from .personnel_base import PersonnelBase
 from ..mixins import TimestampMixin
 
 
+# pylint: disable=too-few-public-methods
 class LineItem(PersonnelBase, TimestampMixin):
     """Line item model representing individual items in an order."""
 
