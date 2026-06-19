@@ -20,4 +20,4 @@ jobs:
         pip install pylint sqlalchemy
     - name: Analysing the code with pylint
       run: |
-        pylint --ignore-paths=^alembic/.* $(git ls-files '*.py')
+        pylint $(git ls-files '*.py')
