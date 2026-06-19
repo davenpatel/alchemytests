@@ -1,5 +1,8 @@
+"""Base class for networking models."""
+
 from sqlalchemy.orm import DeclarativeBase
 
 
+# pylint: disable=too-few-public-methods
 class NetworkingBase(DeclarativeBase):
-    pass
+    """Base class for networking models."""

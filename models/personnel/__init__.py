@@ -1,4 +1,13 @@
-from .personnel_base import PersonnelBase as PersonnelBase
-from .user import User as User
-from .order import Order as Order
-from .line_item import LineItem as LineItem
+"""Personnel models."""
+
+from .personnel_base import PersonnelBase
+from .user import User
+from .order import Order
+from .line_item import LineItem
+
+__all__ = [
+    "PersonnelBase",
+    "User",
+    "Order",
+    "LineItem",
+]

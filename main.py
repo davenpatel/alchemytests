@@ -1,4 +1,8 @@
+"""Main module for alembicbranching."""
+
+
 def main():
+    """Main function for alembicbranching."""
     print("Hello from alembicbranching!")
 
 

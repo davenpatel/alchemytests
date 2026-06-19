@@ -1,10 +1,15 @@
+"""Personnel line item model."""
+
 from sqlalchemy import Column, Float, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
 from .personnel_base import PersonnelBase
 from ..mixins import TimestampMixin
 
 
+# pylint: disable=too-few-public-methods
 class LineItem(PersonnelBase, TimestampMixin):
+    """Line item model representing individual items in an order."""
+
     __tablename__ = "line_items"
     __table_args__ = {"schema": "personnel"}
 
