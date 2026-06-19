@@ -1,5 +1,7 @@
+"""Base class for networking models."""
+
 from sqlalchemy.orm import DeclarativeBase
 
 
 class NetworkingBase(DeclarativeBase):
-    pass
+    """Base class for networking models."""

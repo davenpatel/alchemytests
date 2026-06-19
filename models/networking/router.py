@@ -1,3 +1,5 @@
+"""Router model."""
+
 from sqlalchemy import Column, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
 from .networking_base import NetworkingBase
@@ -5,6 +7,8 @@ from ..mixins import TimestampMixin
 
 
 class Router(NetworkingBase, TimestampMixin):
+    """Represents a router in the network."""
+
     __tablename__ = "routers"
     __table_args__ = {"schema": "networking"}
 

@@ -1,3 +1,5 @@
+"""User model for personnel management."""
+
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import relationship
 from .personnel_base import PersonnelBase
@@ -5,6 +7,8 @@ from ..mixins import TimestampMixin
 
 
 class User(PersonnelBase, TimestampMixin):
+    """User model representing a personnel user."""
+
     __tablename__ = "users"
     __table_args__ = {"schema": "personnel"}
 
