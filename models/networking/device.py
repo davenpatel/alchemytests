@@ -1,4 +1,4 @@
-from sqlalchemy import Column, ForeignKey, Integer, String, func
+from sqlalchemy import Column, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
 from .networking_base import NetworkingBase
 from ..mixins import TimestampMixin

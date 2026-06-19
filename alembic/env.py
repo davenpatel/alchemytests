@@ -1,9 +1,11 @@
-import os
 
 from logging.config import fileConfig
 
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
+
+from models.networking.networking_base import NetworkingBase
+from models.personnel.personnel_base import PersonnelBase
 
 from alembic import context
 
@@ -20,9 +22,6 @@ if config.config_file_name is not None:
 # for 'autogenerate' support
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
-
-from models.networking.networking_base import NetworkingBase
-from models.personnel.personnel_base import PersonnelBase
 
 target_bases = {
     "networking": NetworkingBase,

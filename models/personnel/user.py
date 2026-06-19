@@ -1,4 +1,4 @@
-from sqlalchemy import Column, DateTime, Integer, String, func
+from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import relationship
 from .personnel_base import PersonnelBase
 from ..mixins import TimestampMixin
