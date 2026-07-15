@@ -8,6 +8,8 @@ from models.personnel.personnel_base import PersonnelBase
 
 from alembic import context
 
+import os
+
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
@@ -37,6 +39,13 @@ target_metadata = [
 # my_important_option = config.get_main_option("my_important_option")
 # ... etc.
 
+def set_versions_locations():
+    # print(f"Versions Path: {context.script.version_locations}")
+    for key in target_bases.keys():
+        cwd = os.getcwd()
+        versions_path = os.path.join(cwd, "alembic", "versions", key)
+        context.script.version_locations.append(versions_path)
+    # print(f"Versions Path: {context.script.version_locations}")
 
 def get_target_metadata():
     # print('X Arguments:', context.get_x_argument(as_dictionary=True))
@@ -118,7 +127,7 @@ def run_migrations_online() -> None:
         with context.begin_transaction():
             context.run_migrations()
 
-
+set_versions_locations()
 if context.is_offline_mode():
     run_migrations_offline()
 else:
