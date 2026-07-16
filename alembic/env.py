@@ -39,6 +39,7 @@ target_metadata = [
 # my_important_option = config.get_main_option("my_important_option")
 # ... etc.
 
+
 def set_versions_locations():
     # print(f"Versions Path: {context.script.version_locations}")
     for key in target_bases.keys():
@@ -47,10 +48,19 @@ def set_versions_locations():
         context.script.version_locations.append(versions_path)
     # print(f"Versions Path: {context.script.version_locations}")
 
+
 def get_target_metadata():
     # print('X Arguments:', context.get_x_argument(as_dictionary=True))
     valid_commands = {"revision"}
-    command_run = context.config.cmd_opts.cmd[0].__name__
+    # Safely get the currently running command name. context.config.cmd_opts may be None
+    # when env.py is invoked in certain contexts (e.g., programmatically), so guard access.
+    cmd_opts = getattr(context.config, "cmd_opts", None)
+    if cmd_opts is None or not getattr(cmd_opts, "cmd", None):
+        command_run = None
+    else:
+        # cmd is a list of callables; take the first and get its __name__ if available
+        first_cmd = cmd_opts.cmd[0]
+        command_run = getattr(first_cmd, "__name__", None)
     selected_metadata = target_metadata
 
     if command_run in valid_commands:
@@ -126,6 +136,7 @@ def run_migrations_online() -> None:
 
         with context.begin_transaction():
             context.run_migrations()
+
 
 set_versions_locations()
 if context.is_offline_mode():
