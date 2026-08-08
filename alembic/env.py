@@ -1,14 +1,11 @@
+import os
 from logging.config import fileConfig
 
-from sqlalchemy import engine_from_config
-from sqlalchemy import pool
-
-from models.networking.networking_base import NetworkingBase
-from models.personnel.personnel_base import PersonnelBase
+from sqlalchemy import engine_from_config, pool
 
 from alembic import context
-
-import os
+from models.networking.networking_base import NetworkingBase
+from models.personnel.personnel_base import PersonnelBase
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
@@ -42,7 +39,7 @@ target_metadata = [
 
 def set_versions_locations():
     # print(f"Versions Path: {context.script.version_locations}")
-    for key in target_bases.keys():
+    for key in target_bases:
         cwd = os.getcwd()
         versions_path = os.path.join(cwd, "alembic", "versions", key)
         context.script.version_locations.append(versions_path)
@@ -80,7 +77,7 @@ def get_target_metadata():
 def include_object(object, name, type_, reflected, compare_to):
     # If the object belongs to a schema you don't care about, ignore it
     target_schema = context.get_x_argument(as_dictionary=True).get("base")
-    if type_ == "table" and object.schema != target_schema:
+    if type_ == "table" and object.schema != target_schema:  # noqa: SIM103
         return False
     return True
 

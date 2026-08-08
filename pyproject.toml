@@ -31,3 +31,6 @@ extend-exclude = [
   ".pylintrc",
   "alembic/README",
 ]
+
+[tool.ruff.lint.pylint]
+allow-dunder-method-names = ["__tablename__", "__table_args__"]
