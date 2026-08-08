@@ -2,8 +2,9 @@
 
 from sqlalchemy import Column, Float, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
-from .personnel_base import PersonnelBase
+
 from ..mixins import TimestampMixin
+from .personnel_base import PersonnelBase
 
 
 # pylint: disable=too-few-public-methods
@@ -11,7 +12,7 @@ class LineItem(PersonnelBase, TimestampMixin):
     """Line item model representing individual items in an order."""
 
     __tablename__ = "line_items"
-    __table_args__ = {"schema": "personnel"}
+    __table_args__ = {"schema": "personnel"}  # noqa: RUF012
 
     id = Column(Integer, primary_key=True)
     order_id = Column(Integer, ForeignKey("personnel.orders.id"), nullable=False)
